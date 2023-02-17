@@ -3,3 +3,8 @@ export interface TodoItem {
   text: string;
   isComplete: boolean;
 }
+
+export type TodoListState =
+  | 'Show All'
+  | 'Show Completed'
+  | 'Show Uncompleted';

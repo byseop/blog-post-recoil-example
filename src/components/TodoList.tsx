@@ -1,9 +1,11 @@
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import todoListState from '../recoil/todoList';
 import TodoItemCreator from './TodoItemCreator';
+import TodoItemFilter from './TodoItemFilter';
+import todoListState from '../recoil/todoList';
+import { filteredTodoListState } from '../recoil/todoList/withStateFilter';
 
 const TodoList: React.FC<{}> = () => {
-  const todoList = useRecoilValue(todoListState);
+  const todoList = useRecoilValue(filteredTodoListState);
   const setTodoList = useSetRecoilState(todoListState);
 
   const handleClickRemoveButton = (id: number) => {
@@ -22,6 +24,9 @@ const TodoList: React.FC<{}> = () => {
     <>
       <div>
         <TodoItemCreator />
+      </div>
+      <div>
+        <TodoItemFilter />
       </div>
       <div>
         {todoList.map(todo => (
